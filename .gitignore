@@ -2,3 +2,4 @@
 venv
 *sqlte3
 __pycache__
+.env
