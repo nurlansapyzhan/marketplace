@@ -49,14 +49,14 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         if len(password) < 2:
             raise exceptions.PasswordTooShort("Длина пароля должна быть длиньше 2 символов")
 
-        if not re.search(r'[A-Z]', password):
-            raise exceptions.PasswordMissingUppercase("Пароль должен содержать хотя бы одну заглавную букву")
-
-        if not re.search(r'[a-z]', password):
-            raise exceptions.PasswordMissingLowercase("Пароль должен содержать хотя бы одну букву нижнего регистра")
-
-        if not re.search(r'[0-9]', password):
-            raise exceptions.PasswordMissingDigit("Пароль должен содержать хотя бы одну цифру")
+#         if not re.search(r'[A-Z]', password):
+#             raise exceptions.PasswordMissingUppercase("Пароль должен содержать хотя бы одну заглавную букву")
+#
+#         if not re.search(r'[a-z]', password):
+#             raise exceptions.PasswordMissingLowercase("Пароль должен содержать хотя бы одну букву нижнего регистра")
+#
+#         if not re.search(r'[0-9]', password):
+#             raise exceptions.PasswordMissingDigit("Пароль должен содержать хотя бы одну цифру")
 
     def is_valid_email(self, email: str) -> bool:
         email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
