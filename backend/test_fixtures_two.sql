@@ -5,7 +5,7 @@
 -- Dumped from database version 15.1 (Ubuntu 15.1-1.pgdg22.04+1)
 -- Dumped by pg_dump version 15.1 (Ubuntu 15.1-1.pgdg22.04+1)
 
--- Started on 2023-09-28 15:03:10 +06
+-- Started on 2023-09-29 13:59:33 +06
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -851,7 +851,7 @@ ALTER TABLE ONLY public."user"
     ADD CONSTRAINT user_role_id_fkey FOREIGN KEY (role_id) REFERENCES public.role(id);
 
 
--- Completed on 2023-09-28 15:03:12 +06
+-- Completed on 2023-09-29 13:59:34 +06
 
 --
 -- PostgreSQL database dump complete
