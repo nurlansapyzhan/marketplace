@@ -69,3 +69,11 @@ class Product(Base):
     collection_id = Column(Integer, ForeignKey("collection.id"), nullable=True)
     created_at = Column(DateTime, default=func.timezone('UTC', utc_time))
     added_db_at = Column(DateTime, default=func.timezone('UTC', utc_time))
+
+
+class Photo(Base):
+    __tablename__ = "photo"
+
+    id = Column(Integer, primary_key=True, index=True)
+    url = Column(String, nullable=False)
+    product_id = Column(Integer, ForeignKey("product.id"), nullable=True)
