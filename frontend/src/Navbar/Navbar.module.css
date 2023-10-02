@@ -1,0 +1,28 @@
+.navbar {
+    height: 50px;
+    width: 100%;
+    background-color: var(--main-nav-bg-color);
+    color: var(--main-font-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.navbar nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 var(--main-horizontally-padding-px);
+}
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 1000px) {
+}
+
+@media (max-width: 760px) {
+}
+
+@media (max-width: 480px) {
+}

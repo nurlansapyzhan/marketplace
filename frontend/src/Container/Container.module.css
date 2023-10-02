@@ -1,0 +1,9 @@
+.searchbar{
+    margin-top: 50px;
+    position: relative;
+}
+.con{
+    background-color: var(--main-container-bg-color);
+    padding: 100px var(--main-horizontally-padding-px);
+    min-height: 500px;
+}

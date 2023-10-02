@@ -1,0 +1,37 @@
+.d2 {
+    box-sizing: border-box;
+    position: absolute;
+    top: 20px;
+    left: var(--main-horizontally-padding-px);
+    width: auto;
+}
+.d2 input {
+    width: 200px;
+    height: 42px;
+    padding-left: 15px;
+    padding-right: 50px;
+    border-radius: 42px;
+    background: var(--main-search-bg-color);
+    outline: none;
+    color: var(--main-search-color);
+    border: none;
+    transition: .3s linear;
+    margin-right: -40px;
+}
+.d2 input:focus {
+    width: 250px;
+}
+.d2 button {
+    width: 62px;
+    height: 45px;
+    background: var(--main-search-button-bg-color);
+    border: none;
+    border-radius: 42px;
+}
+.d2 button:before {
+    color: var(--main-search-button-color);
+}
+.d2 button:active {
+    background-color: var(--main-search-button-active-bg-color) !important;
+    transition: background-color 100ms;
+}

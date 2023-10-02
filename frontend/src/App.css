@@ -1,38 +1,24 @@
-.App {
-  text-align: center;
+:root{
+    --main-nav-bg-color: #217074;
+    --main-nav-link-color: #FF652F;
+    --main-font-color: #EAE7DC;
+    --main-font-size: medium;
+    --main-search-bg-color: #F9F0DA;
+    --main-search-button-bg-color: #EDC5AB;
+    --main-search-button-active-bg-color: #37745B;
+    --main-search-color: black;
+    --main-search-button-color: black;
+    --main-product-list-bg-color: ;
+    --main-product-list-border: ;
+    --main-product-info-bg-color: #E7EAEF;
+    --main-product-info-border: ;
+    --main-product-font-color: var(--main-font-color);
+    --main-container-bg-color: #8B9D77;
+    --main-footer-bg-color: var(--main-nav-bg-color);
+    --main-horizontally-padding-px: 200px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body{
+    color: var(--main-font-color);
+    font-size: var(--main-font-size);
 }
