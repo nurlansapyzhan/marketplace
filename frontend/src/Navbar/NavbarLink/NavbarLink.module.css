@@ -1,0 +1,7 @@
+.navbar_link a{
+    color: var(--main-nav-link-color);
+}
+.navbar_link{
+    display: inline-block;
+    padding: 15px 20px;
+}

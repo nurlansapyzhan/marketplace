@@ -1,0 +1,9 @@
+.item{
+    background-color: var(--main-product-info-bg-color);
+    border: var(--main-product-info-border);
+    width: 143px;
+    height: 250px;
+    margin: 20px;
+    display: inline-block;
+    border-radius: 10px;
+}

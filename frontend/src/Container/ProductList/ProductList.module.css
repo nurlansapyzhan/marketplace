@@ -1,0 +1,24 @@
+.list {
+    background-color: var(--main-product-list-bg-color);
+    border: var(--main-product-list-border);
+    margin-bottom: 30px;
+}
+
+.items {
+    white-space: nowrap;
+    overflow: auto;
+}
+
+.items::-webkit-scrollbar {
+    width: 10px;
+}
+
+.items::-webkit-scrollbar-track {
+    background-color: var(--main-search-bg-color);
+    border-radius: 8px;
+}
+
+.items::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: var(--main-search-button-bg-color);
+}
