@@ -4,6 +4,8 @@ from sqlalchemy import func
 from datetime import datetime
 from pytz import UTC
 
+from src.auth.models import user
+
 Base = declarative_base()
 utc_time = datetime(2023, 9, 22, 11, 12, 41, 530000, tzinfo=UTC)
 
@@ -53,6 +55,13 @@ class Collection(Base):
     added_db_at = Column(DateTime, default=func.timezone('UTC', utc_time))
 
 
+class Affiliation(Base):
+    __tablename__ = "affiliation"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+
+
 class Product(Base):
     __tablename__ = "product"
 
@@ -69,6 +78,7 @@ class Product(Base):
     collection_id = Column(Integer, ForeignKey("collection.id"), nullable=True)
     created_at = Column(DateTime, default=func.timezone('UTC', utc_time))
     added_db_at = Column(DateTime, default=func.timezone('UTC', utc_time))
+    affiliation_id = Column(Integer, ForeignKey("affiliation.id"), nullable=False)
 
 
 class Photo(Base):
@@ -93,3 +103,54 @@ class ProductCategory(Base):
     id = Column(Integer, primary_key=True, index=True)
     product_id = Column(Integer, ForeignKey("product.id"), nullable=False)
     category_id = Column(Integer, ForeignKey("category.id"), nullable=False)
+
+
+class ProductSalesType(Base):
+    __tablename__ = "product_sales_type"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+
+
+class SellerProduct(Base):
+    __tablename__ = "seller_product"
+
+    id = Column(Integer, primary_key=True, index=True)
+    product_id = Column(Integer, ForeignKey("product.id"), nullable=False)
+    salesman_id = Column(Integer, ForeignKey(user.c.id), nullable=False)
+    price = Column(Float, nullable=False)
+    discount = Column(Float, nullable=False)
+    sale_type_id = Column(Integer, ForeignKey("product_sales_type.id"), nullable=False)
+
+
+class SizeNumber(Base):
+    __tablename__ = "size_numbers"
+
+    id = Column(Integer, primary_key=True, index=True)
+    size = Column(Integer, nullable=False)
+
+
+class SizeLetter(Base):
+    __tablename__ = "size_letter"
+
+    id = Column(Integer, primary_key=True, index=True)
+    size = Column(String, nullable=False)
+
+
+class Size(Base):
+    __tablename__ = "size"
+
+    id = Column(Integer, primary_key=True, index=True)
+    size_numbers_id = Column(Integer, ForeignKey("size_numbers.id"), nullable=False)
+    size_letter_id = Column(Integer, ForeignKey("size_letter.id"), nullable=False)
+    affiliation_id = Column(Integer, ForeignKey("affiliation.id"), nullable=False)
+
+
+class SellerProductsSize(Base):
+    __tablename__ = "seller_products_size"
+
+    id = Column(Integer, primary_key=True, index=True)
+    product_id = Column(Integer, ForeignKey("product.id"), nullable=False)
+    size_numbers_id = Column(Integer, ForeignKey("size_numbers.id"), nullable=True)
+    size_letter_id = Column(Integer, ForeignKey("size_letter.id"), nullable=True)
+    quantity = Column(Integer, nullable=True)
