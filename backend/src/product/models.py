@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Float, DateTime
+from sqlalchemy import Column, Integer, String, ForeignKey, Float, DateTime, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import func
 from datetime import datetime
@@ -121,6 +121,9 @@ class SellerProduct(Base):
     price = Column(Float, nullable=False)
     discount = Column(Float, nullable=False)
     sale_type_id = Column(Integer, ForeignKey("product_sales_type.id"), nullable=False)
+    is_deleted = Column(Boolean, default=False, nullable=False)
+    created_at = Column(DateTime, default=func.timezone('UTC', utc_time))
+    deleted_at = Column(DateTime, nullable=True)
 
 
 class SizeNumber(Base):

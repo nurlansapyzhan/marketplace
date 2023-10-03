@@ -8,7 +8,7 @@ from alembic import context
 from src.config import DB_HOST, DB_PORT, DB_USER, DB_NAME, DB_PASS
 from src.auth.models import metadata
 from src.product.models import Base as ProductBase
-
+from src.models import Base as GlobalBase
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -30,7 +30,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = [ProductBase.metadata, metadata]
+target_metadata = [ProductBase.metadata, metadata, GlobalBase.metadata]
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:

@@ -47,12 +47,16 @@ INSERT INTO product_category VALUES (5, 6, 6);
 INSERT INTO public.user (id, email, username, hashed_password, is_active, is_superuser, is_verified) VALUES (1, 'max.max@mail.com', 'max', '123456', True, True, True);
 
 INSERT INTO public.product_sales_type (id, name) VALUES (1, 'asacsacsй');
+
 INSERT INTO public.seller_product (id, product_id, salesman_id, price, discount, sale_type_id) VALUES (1, 1, 1, 5000, 0, 1);
 INSERT INTO public.seller_product (id, product_id, salesman_id, price, discount, sale_type_id) VALUES (2, 1, 1, 5000, 0, 1);
 
 INSERT INTO public.size_numbers (id, size) VALUES (1, 65);
+
 INSERT INTO public.size_letter (id, size) VALUES (1, 'm');
 
 INSERT INTO public.size (id, size_numbers_id, size_letter_id, affiliation_id) VALUES (1, 1, 1, 1);
 
 INSERT INTO public.seller_products_size (id, product_id, size_numbers_id, size_letter_id, quantity) VALUES (1, 1, 1, 1, 50);
+
+INSERT INTO public.review (id, user_who_left_review_id, to_the_seller_id, product_id, review_text, grade, created_at) VALUES (1, 1, 1, 1, 'asdasadsasd', 5, '2023-09-22 11:12:41.53');
