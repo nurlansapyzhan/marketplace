@@ -76,4 +76,20 @@ class Photo(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     url = Column(String, nullable=False)
-    product_id = Column(Integer, ForeignKey("product.id"), nullable=True)
+    product_id = Column(Integer, ForeignKey("product.id"), nullable=False)
+
+
+class Category(Base):
+    __tablename__ = "category"
+
+    id = Column(Integer, primary_key=True, index=True)
+    category = Column(String, nullable=False)
+    category_id = Column(Integer, ForeignKey("category.id"), nullable=True)
+
+
+class ProductCategory(Base):
+    __tablename__ = "product_category"
+
+    id = Column(Integer, primary_key=True, index=True)
+    product_id = Column(Integer, ForeignKey("product.id"), nullable=False)
+    category_id = Column(Integer, ForeignKey("category.id"), nullable=False)
