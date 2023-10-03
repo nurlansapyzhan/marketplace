@@ -122,7 +122,7 @@ class SellerProduct(Base):
     discount = Column(Float, nullable=False)
     sale_type_id = Column(Integer, ForeignKey("product_sales_type.id"), nullable=False)
     is_deleted = Column(Boolean, default=False, nullable=False)
-    created_at = Column(DateTime, default=func.timezone('UTC', utc_time))
+    added_db_at = Column(DateTime, default=func.timezone('UTC', utc_time))
     deleted_at = Column(DateTime, nullable=True)
 
 

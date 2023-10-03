@@ -3,7 +3,7 @@ from sqlalchemy import func
 from sqlalchemy.ext.declarative import declarative_base
 
 from datetime import datetime
-from sqlalchemy import Column, Integer, String, ForeignKey, Float, DateTime
+from sqlalchemy import Column, Integer, String, ForeignKey, Float, DateTime, Boolean
 
 from src.auth.models import user
 
@@ -23,4 +23,6 @@ class Review(Base):
     review_id = Column(Integer, ForeignKey('review.id'), nullable=True)
     review_text = Column(String, nullable=True)
     grade = Column(Float, nullable=True)
-    created_at = Column(DateTime, default=func.timezone('UTC', utc_time))
+    added_db_at = Column(DateTime, default=func.timezone('UTC', utc_time))
+    is_deleted = Column(Boolean, default=False, nullable=False)
+    deleted_at = Column(DateTime, nullable=True)
