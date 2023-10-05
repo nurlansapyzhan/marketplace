@@ -66,3 +66,7 @@ INSERT INTO public.address (id, address_name) VALUES (1, 'adsaadasda');
 INSERT INTO public.payment_methods (id, method_names) VALUES (1, 'sdasdasdasad');
 
 INSERT INTO public.check (id, buyer_id, address_id, total_price, delivery_price, method_names_id, basket_created_at, check_created_at) VALUES (1, 1, 1, 5000, 2000, 1, '2023-09-22 11:12:41.53', '2023-09-22 11:12:41.53');
+
+INSERT INTO public.discount_coupon (id, name_coupons, coupon_code, discount_percentage, discount_amount, smallest_check_amount, largest_check_amount, total_number_activations, number_activations_per_user, is_deleted, coupon_creation_date) VALUES (1, 'sdasdasdasad', '1dsd22213a', 50, 60, 40, 20, 30, 80, False, '2023-09-22 11:12:41.53');
+
+INSERT INTO users_coupon VALUES (1, 1, 1, 1, 1);

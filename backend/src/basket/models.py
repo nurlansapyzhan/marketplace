@@ -6,6 +6,8 @@ from pytz import UTC
 
 from src.auth.models import user
 
+from src.product.models import Product
+
 Base = declarative_base()
 utc_time = datetime(2023, 9, 22, 11, 12, 41, 530000, tzinfo=UTC)
 
@@ -35,3 +37,32 @@ class Check(Base):
     method_names_id = Column(Integer, ForeignKey('payment_methods.id'), nullable=True)
     basket_created_at = Column(DateTime, default=func.timezone('UTC', utc_time))
     check_created_at = Column(DateTime, nullable=True)
+
+
+class DiscountCoupon(Base):
+    __tablename__ = "discount_coupon"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name_coupons = Column(String, nullable=False)
+    coupon_code = Column(String, nullable=False)
+    discount_percentage = Column(Float, nullable=True)
+    discount_amount = Column(Float, nullable=True)
+    smallest_check_amount = Column(Float, nullable=True)
+    largest_check_amount = Column(Float, nullable=True)
+    total_number_activations = Column(Integer, nullable=True)
+    number_activations_per_user = Column(Integer, nullable=True)
+    is_deleted = Column(Boolean, default=False, nullable=False)
+    coupon_start_date = Column(DateTime, nullable=True)
+    coupon_expiration_date = Column(DateTime, nullable=True)
+    coupon_creation_date = Column(DateTime, default=func.timezone('UTC', utc_time))
+    coupon_delete_date = Column(DateTime, nullable=True)
+
+
+class UsersCoupon(Base):
+    __tablename__ = "users_coupon"
+
+    id = Column(Integer, primary_key=True, index=True)
+    seller_who_provides_coupon_id = Column(Integer, ForeignKey(user.c.id), nullable=True)
+    product_id = Column(Integer, ForeignKey(Product.id), nullable=True)
+    buyer_who_can_use_coupon_id = Column(Integer, ForeignKey(user.c.id), nullable=True)
+    coupon_id = Column(Integer, ForeignKey('discount_coupon.id'), nullable=False)
