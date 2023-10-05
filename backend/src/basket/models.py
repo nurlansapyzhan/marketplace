@@ -44,7 +44,7 @@ class DiscountCoupon(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
-    coupon_code = Column(String, nullable=False)
+    code = Column(String, nullable=False)
     discount_percentage = Column(Float, nullable=True)
     discount_amount = Column(Float, nullable=True)
     smallest_check_amount = Column(Float, nullable=True)

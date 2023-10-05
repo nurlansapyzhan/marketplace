@@ -47,7 +47,7 @@ def upgrade() -> None:
     op.create_table('discount_coupon',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
-    sa.Column('coupon_code', sa.String(), nullable=False),
+    sa.Column('code', sa.String(), nullable=False),
     sa.Column('discount_percentage', sa.Float(), nullable=True),
     sa.Column('discount_amount', sa.Float(), nullable=True),
     sa.Column('smallest_check_amount', sa.Float(), nullable=True),
