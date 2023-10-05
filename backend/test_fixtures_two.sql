@@ -70,3 +70,9 @@ INSERT INTO public.check (id, buyer_id, address_id, total_price, delivery_price,
 INSERT INTO public.discount_coupon (id, name_coupons, coupon_code, discount_percentage, discount_amount, smallest_check_amount, largest_check_amount, total_number_activations, number_activations_per_user, is_deleted, coupon_creation_date) VALUES (1, 'sdasdasdasad', '1dsd22213a', 50, 60, 40, 20, 30, 80, False, '2023-09-22 11:12:41.53');
 
 INSERT INTO users_coupon VALUES (1, 1, 1, 1, 1);
+
+INSERT INTO notification VALUES (1, 'dasdsadas', 'adsasdassaa');
+
+INSERT INTO order_status VALUES (1, 'sdasadasd', 1);
+
+INSERT INTO order_delivery_status VALUES (1, 1, 1, '2023-09-22 11:12:41.53');
