@@ -66,3 +66,28 @@ class UsersCoupon(Base):
     product_id = Column(Integer, ForeignKey(Product.id), nullable=True)
     buyer_who_can_use_coupon_id = Column(Integer, ForeignKey(user.c.id), nullable=True)
     coupon_id = Column(Integer, ForeignKey('discount_coupon.id'), nullable=False)
+
+
+class Notification(Base):
+    __tablename__ = "notification"
+
+    id = Column(Integer, primary_key=True, index=True)
+    notification_title = Column(String, nullable=False)
+    notification_text = Column(String, nullable=False)
+
+
+class OrderStatus(Base):
+    __tablename__ = "order_status"
+
+    id = Column(Integer, primary_key=True, index=True)
+    status_name = Column(String, nullable=False)
+    notification_status_id = Column(Integer, ForeignKey('notification.id'), nullable=False)
+
+
+class OrderDeliveryStatus(Base):
+    __tablename__ = "order_delivery_status"
+
+    id = Column(Integer, primary_key=True, index=True)
+    check_id = Column(Integer, ForeignKey('check.id'), nullable=False)
+    order_status_id = Column(Integer, ForeignKey('order_status.id'), nullable=False)
+    date_presentation_status = Column(DateTime, default=func.timezone('UTC', utc_time))
