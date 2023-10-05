@@ -16,14 +16,14 @@ class Address(Base):
     __tablename__ = "address"
 
     id = Column(Integer, primary_key=True, index=True)
-    address_name = Column(String, nullable=False)
+    name = Column(String, nullable=False)
 
 
 class PaymentMethods(Base):
     __tablename__ = "payment_methods"
 
     id = Column(Integer, primary_key=True, index=True)
-    method_names = Column(String, nullable=False)
+    name = Column(String, nullable=False)
 
 
 class Check(Base):
@@ -34,7 +34,7 @@ class Check(Base):
     address_id = Column(Integer, ForeignKey('address.id'), nullable=False)
     total_price = Column(Float, nullable=True)
     delivery_price = Column(Float, nullable=True)
-    method_names_id = Column(Integer, ForeignKey('payment_methods.id'), nullable=True)
+    payment_methods_id = Column(Integer, ForeignKey('payment_methods.id'), nullable=True)
     basket_created_at = Column(DateTime, default=func.timezone('UTC', utc_time))
     check_created_at = Column(DateTime, nullable=True)
 
@@ -43,8 +43,8 @@ class DiscountCoupon(Base):
     __tablename__ = "discount_coupon"
 
     id = Column(Integer, primary_key=True, index=True)
-    name_coupons = Column(String, nullable=False)
-    coupon_code = Column(String, nullable=False)
+    name = Column(String, nullable=False)
+    code = Column(String, nullable=False)
     discount_percentage = Column(Float, nullable=True)
     discount_amount = Column(Float, nullable=True)
     smallest_check_amount = Column(Float, nullable=True)
@@ -62,9 +62,9 @@ class UsersCoupon(Base):
     __tablename__ = "users_coupon"
 
     id = Column(Integer, primary_key=True, index=True)
-    seller_who_provides_coupon_id = Column(Integer, ForeignKey(user.c.id), nullable=True)
+    seller_provides_coupon_id = Column(Integer, ForeignKey(user.c.id), nullable=True)
     product_id = Column(Integer, ForeignKey(Product.id), nullable=True)
-    buyer_who_can_use_coupon_id = Column(Integer, ForeignKey(user.c.id), nullable=True)
+    buyer_use_coupon_id = Column(Integer, ForeignKey(user.c.id), nullable=True)
     coupon_id = Column(Integer, ForeignKey('discount_coupon.id'), nullable=False)
 
 
@@ -72,16 +72,16 @@ class Notification(Base):
     __tablename__ = "notification"
 
     id = Column(Integer, primary_key=True, index=True)
-    notification_title = Column(String, nullable=False)
-    notification_text = Column(String, nullable=False)
+    title = Column(String, nullable=False)
+    text = Column(String, nullable=False)
 
 
 class OrderStatus(Base):
     __tablename__ = "order_status"
 
     id = Column(Integer, primary_key=True, index=True)
-    status_name = Column(String, nullable=False)
-    notification_status_id = Column(Integer, ForeignKey('notification.id'), nullable=False)
+    name = Column(String, nullable=False)
+    notification_id = Column(Integer, ForeignKey('notification.id'), nullable=False)
 
 
 class OrderDeliveryStatus(Base):
@@ -91,3 +91,15 @@ class OrderDeliveryStatus(Base):
     check_id = Column(Integer, ForeignKey('check.id'), nullable=False)
     order_status_id = Column(Integer, ForeignKey('order_status.id'), nullable=False)
     date_presentation_status = Column(DateTime, default=func.timezone('UTC', utc_time))
+
+
+class ProductsBasket(Base):
+    __tablename__ = "products_basket"
+
+    id = Column(Integer, primary_key=True, index=True)
+    check_id = Column(Integer, ForeignKey('check.id'), nullable=False)
+    product_id = Column(Integer, ForeignKey(Product.id), nullable=False)
+    quantity = Column(Integer, nullable=False, default=1)
+    total_price = Column(Float, nullable=False)
+    coupon_id = Column(Integer, ForeignKey('discount_coupon.id'), nullable=True)
+    total_price_with_coupon = Column(Float, nullable=True)

@@ -61,13 +61,13 @@ INSERT INTO public.seller_products_size (id, product_id, size_numbers_id, size_l
 
 INSERT INTO public.review (id, user_who_left_review_id, to_the_seller_id, product_id, review_text, grade, added_db_at, is_deleted) VALUES (1, 1, 1, 1, 'asdasadsasd', 5, '2023-09-22 11:12:41.53', False);
 
-INSERT INTO public.address (id, address_name) VALUES (1, 'adsaadasda');
+INSERT INTO address VALUES (1, 'adsaadasda');
 
-INSERT INTO public.payment_methods (id, method_names) VALUES (1, 'sdasdasdasad');
+INSERT INTO payment_methods VALUES (1, 'sdasdasdasad');
 
-INSERT INTO public.check (id, buyer_id, address_id, total_price, delivery_price, method_names_id, basket_created_at, check_created_at) VALUES (1, 1, 1, 5000, 2000, 1, '2023-09-22 11:12:41.53', '2023-09-22 11:12:41.53');
+INSERT INTO public.check (id, buyer_id, address_id, total_price, delivery_price, payment_methods_id, basket_created_at, check_created_at)  VALUES (1, 1, 1, 5000, 2000, 1, '2023-09-22 11:12:41.53', '2023-09-22 11:12:41.53');
 
-INSERT INTO public.discount_coupon (id, name_coupons, coupon_code, discount_percentage, discount_amount, smallest_check_amount, largest_check_amount, total_number_activations, number_activations_per_user, is_deleted, coupon_creation_date) VALUES (1, 'sdasdasdasad', '1dsd22213a', 50, 60, 40, 20, 30, 80, False, '2023-09-22 11:12:41.53');
+INSERT INTO discount_coupon VALUES (1, 'sdasdasdasad', '1dsd22213a', 50, 60, 40, 20, 30, 80, False, '2023-09-22 11:12:41.53');
 
 INSERT INTO users_coupon VALUES (1, 1, 1, 1, 1);
 
@@ -76,3 +76,5 @@ INSERT INTO notification VALUES (1, 'dasdsadas', 'adsasdassaa');
 INSERT INTO order_status VALUES (1, 'sdasadasd', 1);
 
 INSERT INTO order_delivery_status VALUES (1, 1, 1, '2023-09-22 11:12:41.53');
+
+INSERT INTO products_basket VALUES (1, 1, 1, 5, 5000, 1, 6000);
