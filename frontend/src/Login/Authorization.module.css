@@ -1,0 +1,83 @@
+:root{
+    --left-fixed: 40%;
+    --top-fixed: 40%;
+}
+
+.authorization_block{
+    background: transparent;
+    backdrop-filter: blur(40px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #DCDCDC;
+    width: 420px;
+    position: fixed;
+    padding: 20px;
+    padding-bottom: 30px;
+    border-radius: 20px;
+    left: var(--left-fixed);
+    top: var(--top-fixed);
+}
+
+.authorization_block h1{
+    font-size: 36px;
+    text-align: center;
+}
+
+.authorization_block .input_box{
+    height: 50px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.input_box input{
+    background: transparent;
+    border: solid 2px rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 15px;
+    width: 90%;
+}
+
+.input_box input::placeholder{
+    color: silver;
+}
+
+.authorization_block button{
+    width: 100%;
+    height: 50px;
+    background: #DCDCDC;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: black;
+    font-weight: 600;
+}
+
+.register_link{
+    margin-top: 20px;
+    color: #DCDCDC;
+    display: flex;
+    justify-content: center;
+}
+
+.register_link a{
+    color: #fff;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6)!important;
+    z-index: 500;
+}
+.no_overlay {
+    z-index: 1000;
+}
