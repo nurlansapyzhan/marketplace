@@ -1,6 +1,6 @@
 from fastapi_users import FastAPIUsers
 
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, HTTPException
 
 from src.auth.auth import auth_backend
 from src.database import User
@@ -8,6 +8,8 @@ from src.auth.manager import get_user_manager
 from src.auth.schemas import UserRead, UserCreate
 
 from src.product.routers import router as router_product
+
+from src.auth.schemas import UserUpdate
 
 app = FastAPI(
     title="Trading App"
@@ -41,6 +43,19 @@ def protected_route(user: User = Depends(current_user)):
 @app.get("/unprotected-route")
 def unprotected_route():
     return f"Hello, anonym"
+
+
+@app.patch("/update-user/{user_id}", response_model=UserRead, tags=["auth"])
+async def update_user(
+        user_id: int,
+        user_update: UserUpdate,
+        user_manager=Depends(get_user_manager),
+):
+    try:
+        updated_user = await user_manager.update(user_id, user_update)
+        return updated_user
+    except HTTPException as e:
+        return e
 
 
 app.include_router(router_product)
