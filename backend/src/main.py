@@ -6,7 +6,8 @@ from src.auth.auth import auth_backend
 from src.database import User
 from src.auth.manager import get_user_manager
 from src.auth.schemas import UserRead, UserCreate
-from src.product.router import router as router_product
+
+from src.product.routers import router as router_product
 
 app = FastAPI(
     title="Trading App"

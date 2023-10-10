@@ -79,6 +79,7 @@ class Product(Base):
     created_at = Column(DateTime, default=func.timezone('UTC', utc_time))
     added_db_at = Column(DateTime, default=func.timezone('UTC', utc_time))
     affiliation_id = Column(Integer, ForeignKey("affiliation.id"), nullable=False)
+    is_deleted = Column(Boolean, default=False, nullable=False)
 
 
 class Photo(Base):
