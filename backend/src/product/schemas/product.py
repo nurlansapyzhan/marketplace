@@ -22,14 +22,43 @@ class ProductRead(BaseModel):
         orm_mode = True
 
 
-class ProductCreate(BaseModel):
+class ProductListRead(BaseModel):
     id: int
     name: str
     brand_id: int
-    description: str
     color_id: int
-    product_rating: float
+    product_rating: Optional[float]
+    number_of_reviews: Optional[int]
     compound_id: int
     pattern_id: int
     season_id: int
     collection_id: int
+    created_at: Optional[datetime]
+
+    class Config:
+        orm_mode = True
+
+
+class ProductCreate(BaseModel):
+    name: str
+    brand_id: int
+    description: str
+    color_id: int
+    compound_id: int
+    pattern_id: int
+    season_id: int
+    collection_id: int
+    affiliation_id: int
+
+
+class ProductPut(BaseModel):
+    name: str
+    brand_id: int
+    description: str
+    color_id: int
+    compound_id: int
+    pattern_id: int
+    season_id: int
+    collection_id: int
+    affiliation_id: int
+
