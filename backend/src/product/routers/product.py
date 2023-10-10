@@ -31,15 +31,15 @@ async def get_product_detail(product_id: int, session: AsyncSession = Depends(ge
 
 
 @router.post("/")
-async def create_product(new_operation: ProductCreate, session: AsyncSession = Depends(get_async_session)):
-    stmt = insert(Product).values(**new_operation.dict())
+async def post_product_create(new_product: ProductCreate, session: AsyncSession = Depends(get_async_session)):
+    stmt = insert(Product).values(**new_product.dict())
     await session.execute(stmt)
     await session.commit()
     return {"status": "success"}
 
 
 @router.put("/{product_id}", response_model=ProductPut)
-async def update_product(product_id: int, product: ProductPut, session: AsyncSession = Depends(get_async_session), ):
+async def put_product_update(product_id: int, product: ProductPut, session: AsyncSession = Depends(get_async_session), ):
     stmt = (
         update(Product)
         .where(Product.id == product_id)
@@ -56,7 +56,7 @@ async def update_product(product_id: int, product: ProductPut, session: AsyncSes
 
 
 @router.delete("/{product_id}", response_model=ProductRead)
-async def delete_product(product_id: int, session: AsyncSession = Depends(get_async_session)):
+async def product_delete(product_id: int, session: AsyncSession = Depends(get_async_session)):
     stmt = (
         update(Product)
         .where(Product.id == product_id)

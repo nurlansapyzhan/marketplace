@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Union, Optional
+from typing import Optional
 from pydantic import BaseModel
 
 
@@ -44,7 +44,6 @@ class ProductCreate(BaseModel):
     brand_id: int
     description: str
     color_id: int
-    product_rating: float
     compound_id: int
     pattern_id: int
     season_id: int
@@ -61,3 +60,5 @@ class ProductPut(BaseModel):
     pattern_id: int
     season_id: int
     collection_id: int
+    affiliation_id: int
+
