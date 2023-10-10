@@ -36,3 +36,28 @@ class InvalidResetPasswordToken(FastAPIUsersException):
 class InvalidPasswordException(FastAPIUsersException):
     def __init__(self, reason: Any) -> None:
         self.reason = reason
+
+
+class UserNotFound(FastAPIUsersException):
+    def __init__(self, reason: Any) -> None:
+        self.reason = reason
+
+
+class PasswordTooShort(FastAPIUsersException):
+    def __init__(self, reason: Any) -> None:
+        self.reason = reason
+
+
+class PasswordMissingUppercase(FastAPIUsersException):
+    def __init__(self, reason: Any) -> None:
+        self.reason = reason
+
+
+class PasswordMissingLowercase(FastAPIUsersException):
+    def __init__(self, reason: Any) -> None:
+        self.reason = reason
+
+
+class PasswordMissingDigit(FastAPIUsersException):
+    def __init__(self, reason: Any) -> None:
+        self.reason = reason

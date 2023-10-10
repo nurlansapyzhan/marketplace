@@ -2,6 +2,7 @@ import uuid
 from typing import Optional
 
 from fastapi_users import schemas
+from pydantic import BaseModel, EmailStr
 
 
 class UserRead(schemas.BaseUser[int]):
@@ -17,11 +18,19 @@ class UserRead(schemas.BaseUser[int]):
         orm_mode = True
 
 
-class UserCreate(schemas.BaseUserCreate):
+class UserCreate(BaseModel):
     username: str
-    email: str
+    email: EmailStr
     password: str
-    role_id: int
-    is_active: Optional[bool] = True
-    is_superuser: Optional[bool] = False
-    is_verified: Optional[bool] = False
+
+    def create_update_dict(self):
+        return {
+            "username": self.username,
+            "email": self.email,
+            "password": self.password,
+        }
+
+
+class UserUpdate(BaseModel):
+    username: str
+    password: str
