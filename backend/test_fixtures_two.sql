@@ -12,10 +12,10 @@ INSERT INTO public.season (id, seasons_name) VALUES (1, 'jljlkjl');
 
 INSERT INTO public.affiliation (id, name) VALUES (1, 'мужской');
 
-INSERT INTO public.product (id, name, brand_id, description, color_id, product_rating, number_of_reviews, compound_id, pattern_id, season_id, collection_id, created_at, added_db_at, affiliation_id) VALUES (1, 'jljlkjl', 1, 'asdasasasda', 1, 1, 1, 1, 1, 1, 1, '2023-09-22 11:12:41.53', '2023-09-22 11:12:41.53', 1);
-INSERT INTO public.product (id, name, brand_id, description, color_id, product_rating, number_of_reviews, compound_id, pattern_id, season_id, collection_id, created_at, added_db_at, affiliation_id) VALUES (2, 'string', 1, 'string', 1, 1, NULL, 1, 1, 1, 1, '2023-09-22 11:12:41.53', '2023-09-22 11:12:41.53', 1);
-INSERT INTO public.product (id, name, brand_id, description, color_id, product_rating, number_of_reviews, compound_id, pattern_id, season_id, collection_id, created_at, added_db_at, affiliation_id) VALUES (3, 'string', 1, 'string', 1, 1, NULL, 1, 1, 1, 1, '2023-09-22 11:12:41.53', '2023-09-22 11:12:41.53', 1);
-INSERT INTO public.product (id, name, brand_id, description, color_id, product_rating, number_of_reviews, compound_id, pattern_id, season_id, collection_id, created_at, added_db_at, affiliation_id) VALUES (6, 'string', 1, 'string', 1, 1, NULL, 1, 1, 1, 1, '2023-09-22 11:12:41.53', '2023-09-22 11:12:41.53', 1);
+INSERT INTO public.product (id, name, brand_id, description, color_id, product_rating, number_of_reviews, compound_id, pattern_id, season_id, collection_id, created_at, added_db_at, affiliation_id, is_deleted) VALUES (1, 'jljlkjl', 1, 'asdasasasda', 1, 1, 1, 1, 1, 1, 1, '2023-09-22 11:12:41.53', '2023-09-22 11:12:41.53', 1, False);
+INSERT INTO public.product (id, name, brand_id, description, color_id, product_rating, number_of_reviews, compound_id, pattern_id, season_id, collection_id, created_at, added_db_at, affiliation_id, is_deleted) VALUES (2, 'string', 1, 'string', 1, 1, NULL, 1, 1, 1, 1, '2023-09-22 11:12:41.53', '2023-09-22 11:12:41.53', 1, False);
+INSERT INTO public.product (id, name, brand_id, description, color_id, product_rating, number_of_reviews, compound_id, pattern_id, season_id, collection_id, created_at, added_db_at, affiliation_id, is_deleted) VALUES (3, 'string', 1, 'string', 1, 1, NULL, 1, 1, 1, 1, '2023-09-22 11:12:41.53', '2023-09-22 11:12:41.53', 1, False);
+INSERT INTO public.product (id, name, brand_id, description, color_id, product_rating, number_of_reviews, compound_id, pattern_id, season_id, collection_id, created_at, added_db_at, affiliation_id, is_deleted) VALUES (6, 'string', 1, 'string', 1, 1, NULL, 1, 1, 1, 1, '2023-09-22 11:12:41.53', '2023-09-22 11:12:41.53', 1, False);
 
 INSERT INTO category VALUES (1, 'Одежда', null);
 INSERT INTO category VALUES (2, 'Верхняя одежда', 1);
@@ -78,3 +78,7 @@ INSERT INTO order_status VALUES (1, 'sdasadasd', 1);
 INSERT INTO order_delivery_status VALUES (1, 1, 1, '2023-09-22 11:12:41.53');
 
 INSERT INTO products_basket VALUES (1, 1, 1, 5, 5000, 1, 6000);
+
+INSERT INTO role VALUES (1, 'dasdsadas');
+
+

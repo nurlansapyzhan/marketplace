@@ -1,8 +1,8 @@
-"""migtaition0.1
+"""migtaition0.2
 
-Revision ID: 9535c8134038
+Revision ID: fa534a44d9fd
 Revises: 20a1ef17adc6
-Create Date: 2023-10-05 14:29:15.901990
+Create Date: 2023-10-09 16:48:02.158549
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '9535c8134038'
+revision: str = 'fa534a44d9fd'
 down_revision: Union[str, None] = '20a1ef17adc6'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -135,6 +135,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_products_basket_id'), 'products_basket', ['id'], unique=False)
+    op.add_column('product', sa.Column('is_deleted', sa.Boolean(), nullable=False))
     op.add_column('seller_product', sa.Column('is_deleted', sa.Boolean(), nullable=False))
     op.add_column('seller_product', sa.Column('added_db_at', sa.DateTime(), nullable=True))
     op.add_column('seller_product', sa.Column('deleted_at', sa.DateTime(), nullable=True))
@@ -146,6 +147,7 @@ def downgrade() -> None:
     op.drop_column('seller_product', 'deleted_at')
     op.drop_column('seller_product', 'added_db_at')
     op.drop_column('seller_product', 'is_deleted')
+    op.drop_column('product', 'is_deleted')
     op.drop_index(op.f('ix_products_basket_id'), table_name='products_basket')
     op.drop_table('products_basket')
     op.drop_index(op.f('ix_order_delivery_status_id'), table_name='order_delivery_status')
