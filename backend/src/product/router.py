@@ -4,14 +4,10 @@ from fastapi import UploadFile
 from fastapi import APIRouter, Depends
 from sqlalchemy import select, insert
 from sqlalchemy.ext.asyncio import AsyncSession
-from src.database import get_async_session
-from src.product.schemas import ProductCreate
 
-from src.product.models import Product
-
-from src.product.schemas import ProductRead
-
-from src.product.models import Photo
+from src.database import get_async_session, User
+from src.product.schemas import ProductCreate, ProductRead
+from src.product.models import Product, Photo
 
 router = APIRouter(
     prefix="/products",
