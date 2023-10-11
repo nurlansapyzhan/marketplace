@@ -103,3 +103,4 @@ class ProductsBasket(Base):
     total_price = Column(Float, nullable=False)
     coupon_id = Column(Integer, ForeignKey('discount_coupon.id'), nullable=True)
     total_price_with_coupon = Column(Float, nullable=True)
+    is_deleted = Column(Boolean, default=False, nullable=False)
