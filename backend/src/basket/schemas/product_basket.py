@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Optional
 
 
 class ProductBasketRead(BaseModel):
@@ -7,8 +8,8 @@ class ProductBasketRead(BaseModel):
     product_id: int
     quantity: int
     total_price: float
-    coupon_id: int
-    total_price_with_coupon: float
+    coupon_id: Optional[int]
+    total_price_with_coupon: Optional[float]
 
     class Config:
         orm_mode = True
@@ -19,8 +20,8 @@ class ProductBasketCreate(BaseModel):
     product_id: int
     quantity: int
     total_price: float
-    coupon_id: int
-    total_price_with_coupon: float
+    coupon_id: Optional[int]
+    total_price_with_coupon: Optional[float]
 
 
 

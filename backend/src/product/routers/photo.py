@@ -13,21 +13,11 @@ router = APIRouter(
 )
 
 
-@router.get("/", response_model=List[PhotoRead])
-async def get_photo_list(page: Optional[int] = Query(1, description="Номер страницы", ge=1),
-                         page_size: Optional[int] = Query(10, description="Размер страницы", ge=1, le=100),
-                         session: AsyncSession = Depends(get_async_session)):
-    offset = (page - 1) * page_size
-    query = select(Photo).offset(offset).limit(page_size)
+@router.get("/{product_id}", response_model=List[PhotoRead])
+async def get_photo_detail(product_id: int, session: AsyncSession = Depends(get_async_session)):
+    query = select(Photo).filter_by(product_id=product_id)
     result = await session.execute(query)
-    return result.scalars().all()
-
-
-@router.get("/{photo_id}", response_model=PhotoRead)
-async def get_photo_detail(photo_id: int, session: AsyncSession = Depends(get_async_session)):
-    query = select(Photo).filter_by(id=photo_id)
-    result = await session.execute(query)
-    return result.scalars().first()
+    return result.scalars()
 
 
 @router.post("/uploadphoto/")
