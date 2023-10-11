@@ -72,14 +72,3 @@ async def product_delete(product_id: int, session: AsyncSession = Depends(get_as
     return delete_product
 
 
-@router.post("/uploadphoto/")
-async def upload_photo(file: UploadFile, product_id: int, session: AsyncSession = Depends(get_async_session)):
-    with open(f'src/upload/{file.filename}', 'wb') as buffer:
-        shutil.copyfileobj(file.file, buffer)
-    stmt = insert(Photo).values({
-        'product_id': product_id,
-        'url': f'src/upload/{file.filename}'
-    })
-    await session.execute(stmt)
-    await session.commit()
-    return {"status": "success"}

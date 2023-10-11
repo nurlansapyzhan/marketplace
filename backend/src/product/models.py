@@ -44,6 +44,7 @@ class Brand(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     brand_name = Column(String, nullable=False)
+    is_deleted = Column(Boolean, default=False, nullable=False)
 
 
 class Collection(Base):
@@ -119,7 +120,6 @@ class SellerProduct(Base):
     id = Column(Integer, primary_key=True, index=True)
     product_id = Column(Integer, ForeignKey("product.id"), nullable=False)
     salesman_id = Column(Integer, ForeignKey(user.c.id), nullable=False)
-    price = Column(Float, nullable=False)
     discount = Column(Float, nullable=False)
     sale_type_id = Column(Integer, ForeignKey("product_sales_type.id"), nullable=False)
     is_deleted = Column(Boolean, default=False, nullable=False)
@@ -158,3 +158,5 @@ class SellerProductsSize(Base):
     size_numbers_id = Column(Integer, ForeignKey("size_numbers.id"), nullable=True)
     size_letter_id = Column(Integer, ForeignKey("size_letter.id"), nullable=True)
     quantity = Column(Integer, nullable=True)
+    price = Column(Float, nullable=False)
+    is_deleted = Column(Boolean, default=False, nullable=False)
