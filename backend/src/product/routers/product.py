@@ -1,5 +1,4 @@
 from typing import List, Optional
-import shutil
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, Query
 from sqlalchemy import select, insert, update
 from sqlalchemy.ext.asyncio import AsyncSession

@@ -53,8 +53,8 @@ class DiscountCoupon(Base):
     total_number_activations = Column(Integer, nullable=True)
     number_activations_per_user = Column(Integer, nullable=True)
     is_deleted = Column(Boolean, default=False, nullable=False)
-    coupon_start_date = Column(DateTime, nullable=True)
-    coupon_expiration_date = Column(DateTime, nullable=True)
+    coupon_start_date = Column(DateTime(timezone=True), nullable=True)
+    coupon_expiration_date = Column(DateTime(timezone=True), nullable=True)
     coupon_creation_date = Column(DateTime, default=func.timezone('UTC', utc_time))
     coupon_delete_date = Column(DateTime, nullable=True)
 
