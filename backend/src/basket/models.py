@@ -17,6 +17,7 @@ class Address(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
+    is_deleted = Column(Boolean, default=False, nullable=False)
 
 
 class PaymentMethods(Base):

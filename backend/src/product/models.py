@@ -113,7 +113,6 @@ class ProductSalesType(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
 
-
 class SellerProduct(Base):
     __tablename__ = "seller_product"
 
