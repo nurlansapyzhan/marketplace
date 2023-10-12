@@ -8,7 +8,7 @@ from src.auth.manager import get_user_manager
 from src.auth.schemas import UserRead, UserCreate
 
 from src.product.routers import router as router_product
-from src.product.routers import seller_product_router, seller_products_size_router, photo_router, brand_router
+from src.product.routers import seller_product_router, seller_products_size_router, photo_router, brand_router, router_only_read_all
 from src.basket.routers import product_basket_router
 from src.auth.schemas import UserUpdate
 
@@ -65,3 +65,4 @@ app.include_router(seller_products_size_router)
 app.include_router(photo_router)
 app.include_router(brand_router)
 app.include_router(product_basket_router)
+app.include_router(router_only_read_all)
