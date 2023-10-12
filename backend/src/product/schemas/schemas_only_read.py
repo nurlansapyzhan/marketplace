@@ -48,7 +48,7 @@ class AffiliationRead(BaseModel):
 class CategoryRead(BaseModel):
     id: int
     category: str
-    category_id: int
+    category_id: Optional[int]
 
     class Config:
         orm_mode = True
