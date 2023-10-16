@@ -9,7 +9,9 @@ from src.auth.schemas import UserRead, UserCreate
 
 from src.product.routers import router as router_product
 from src.product.routers import seller_product_router, seller_products_size_router, photo_router, brand_router, router_only_read_all
-from src.basket.routers import product_basket_router
+from src.basket.routers import product_basket_router, address_router, discount_coupon_router, check_router
+from src.reviews.routers import review_router
+
 from src.auth.schemas import UserUpdate
 
 app = FastAPI(
@@ -65,4 +67,8 @@ app.include_router(seller_products_size_router)
 app.include_router(photo_router)
 app.include_router(brand_router)
 app.include_router(product_basket_router)
+app.include_router(address_router)
+app.include_router(discount_coupon_router)
+app.include_router(review_router)
+app.include_router(check_router)
 app.include_router(router_only_read_all)
