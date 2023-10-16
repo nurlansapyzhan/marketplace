@@ -17,8 +17,8 @@ class DiscountCouponRead(BaseModel):
     is_deleted: bool
     coupon_start_date: Optional[datetime]
     coupon_expiration_date: Optional[datetime]
-    coupon_creation_date: Optional[datetime]
-    coupon_delete_date: Optional[datetime]
+    created_at: Optional[datetime]
+    deleted_at: Optional[datetime]
 
     class Config:
         orm_mode = True

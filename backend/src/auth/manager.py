@@ -11,7 +11,9 @@ from src.auth.schemas import UserCreate
 
 from src.auth.exceptions import PasswordTooShort, UserNotFound, UserAlreadyExists
 
-SECRET = "SECRET"
+from src.config import SECRET
+
+import bcrypt
 
 
 class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
@@ -48,7 +50,6 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         user_dict["is_superuser"] = False
         user_dict["is_verified"] = False
 
-
         created_user = await self.user_db.create(user_dict)
 
         await self.on_after_register(created_user, request)
@@ -75,6 +76,29 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
                 user_update.password
             )
 
+        updated_user = await self.user_db.update(existing_user, update_dict)
+
+        return updated_user
+
+    async def update_password(
+            self,
+            user_id: int,
+            current_password: str,
+            new_password: str,
+            request: Optional[Request] = None,
+    ) -> models.UP:
+        existing_user = await self.user_db.get(user_id)
+        if not existing_user:
+            raise UserNotFound("Пользователь не найден")
+
+        if not bcrypt.checkpw(current_password.encode('utf-8'), existing_user.hashed_password.encode('utf-8')):
+            raise HTTPException(status_code=400, detail="Неверный текущий пароль")
+
+        await self.validate_password(new_password, existing_user)
+
+        new_hashed_password = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt())
+        new_hashed_password_str = new_hashed_password.decode('utf-8')
+        update_dict = {"hashed_password": new_hashed_password_str}
         updated_user = await self.user_db.update(existing_user, update_dict)
 
         return updated_user

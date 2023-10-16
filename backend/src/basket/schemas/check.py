@@ -12,7 +12,8 @@ class CheckRead(BaseModel):
     delivery_price: Optional[float]
     payment_methods_id: Optional[int]
     basket_created_at: datetime
-    check_created_at: datetime
+    check_created_at: Optional[datetime]
+
 
 
 class CheckCreate(BaseModel):

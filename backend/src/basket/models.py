@@ -37,7 +37,7 @@ class Check(Base):
     delivery_price = Column(Float, nullable=True)
     payment_methods_id = Column(Integer, ForeignKey('payment_methods.id'), nullable=True)
     basket_created_at = Column(DateTime, default=func.timezone('UTC', utc_time))
-    check_created_at = Column(DateTime, default=func.timezone('UTC', utc_time))
+    check_created_at = Column(DateTime, default=func.timezone('UTC', utc_time), nullable=True)
     is_deleted = Column(Boolean, default=False, nullable=False)
 
 
@@ -56,8 +56,8 @@ class DiscountCoupon(Base):
     is_deleted = Column(Boolean, default=False, nullable=False)
     coupon_start_date = Column(DateTime(timezone=True), nullable=True)
     coupon_expiration_date = Column(DateTime(timezone=True), nullable=True)
-    coupon_creation_date = Column(DateTime, default=func.timezone('UTC', utc_time))
-    coupon_delete_date = Column(DateTime, nullable=True)
+    created_at = Column(DateTime, default=func.timezone('UTC', utc_time))
+    deleted_at = Column(DateTime, nullable=True)
 
 
 class UsersCoupon(Base):
