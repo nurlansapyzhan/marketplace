@@ -70,11 +70,14 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         if user_update.username:
             update_dict["username"] = user_update.username
 
-        if user_update.password:
-            await self.validate_password(user_update.password, user_update)
-            update_dict["hashed_password"] = self.password_helper.hash(
-                user_update.password
-            )
+        if user_update.name:
+            update_dict["name"] = user_update.name
+
+        if user_update.address:
+            update_dict["address"] = user_update.address
+
+        if user_update.phone:
+            update_dict["phone"] = user_update.phone
 
         updated_user = await self.user_db.update(existing_user, update_dict)
 

@@ -4,20 +4,12 @@ from sqlalchemy import func
 from datetime import datetime
 from pytz import UTC
 
-from src.auth.models import user
+from src.auth.models import user, address
 
 from src.product.models import Product
 
 Base = declarative_base()
 utc_time = datetime(2023, 9, 22, 11, 12, 41, 530000, tzinfo=UTC)
-
-
-class Address(Base):
-    __tablename__ = "address"
-
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, nullable=False)
-    is_deleted = Column(Boolean, default=False, nullable=False)
 
 
 class PaymentMethods(Base):
@@ -32,7 +24,7 @@ class Check(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     buyer_id = Column(Integer, ForeignKey(user.c.id), nullable=False)
-    address_id = Column(Integer, ForeignKey('address.id'), nullable=False)
+    address_id = Column(Integer, ForeignKey(address.c.id), nullable=False)
     total_price = Column(Float, nullable=True)
     delivery_price = Column(Float, nullable=True)
     payment_methods_id = Column(Integer, ForeignKey('payment_methods.id'), nullable=True)
