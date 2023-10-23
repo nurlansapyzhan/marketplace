@@ -1,6 +1,10 @@
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel
+from typing import List
+from fastapi import UploadFile
+
+from src.product.schemas.photo import PhotoRead, PhotoCreate
 
 
 class ProductRead(BaseModel):
@@ -61,4 +65,12 @@ class ProductPut(BaseModel):
     season_id: int
     collection_id: int
     affiliation_id: int
+
+
+class ProductPhoto(ProductListRead):
+    photo: Optional[List[PhotoRead]]
+
+
+class ProductPhotoCreate(ProductCreate):
+    photo: UploadFile
 

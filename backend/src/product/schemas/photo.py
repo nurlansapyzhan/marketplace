@@ -12,4 +12,4 @@ class PhotoRead(BaseModel):
 
 class PhotoCreate(BaseModel):
     url: str
-    product_id: int
+
