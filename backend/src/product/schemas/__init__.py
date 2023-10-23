@@ -1,4 +1,4 @@
-from .product import ProductRead, ProductCreate, ProductPut, ProductListRead
+from .product import ProductRead, ProductCreate, ProductPut, ProductListRead, ProductPhoto, ProductPhotoCreate
 from .seller_product import SellerProductCreate, SellerProductRead
 from .seller_products_size import SellerProductSizeCreate, SellerProductSizeRead
 from .photo import PhotoRead, PhotoCreate
