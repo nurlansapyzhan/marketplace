@@ -66,7 +66,7 @@ async def update_user(
         return e
 
 
-@app.put("/update_password/{user_id}")
+@app.put("/update-password/{user_id}", tags=["auth"])
 async def update_user_password(
         user_id: int,
         current_password: str,

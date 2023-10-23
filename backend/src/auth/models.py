@@ -12,12 +12,24 @@ role = Table(
     Column("permissions", JSON),
 )
 
+
+address = Table(
+    "address",
+    metadata,
+    Column("id", Integer, primary_key=True),
+    Column("name", String, nullable=False),
+    Column("is_deleted", Boolean, default=False, nullable=False),
+)
+
 user = Table(
     "user",
     metadata,
     Column("id", Integer, primary_key=True),
     Column("email", String, nullable=False),
     Column("username", String, nullable=False),
+    Column("name", String, nullable=True),
+    Column("address", Integer, ForeignKey(address.c.id)),
+    Column("phone", String, nullable=True),
     Column("registered_at", TIMESTAMP, default=datetime.utcnow),
     Column("role_id", Integer, ForeignKey(role.c.id)),
     Column("hashed_password", String, nullable=False),

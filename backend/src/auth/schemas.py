@@ -1,4 +1,3 @@
-import uuid
 from typing import Optional
 
 from fastapi_users import schemas
@@ -9,6 +8,9 @@ class UserRead(schemas.BaseUser[int]):
     id: int
     email: str
     username: str
+    name: Optional[str]
+    address: Optional[int]
+    phone: Optional[str]
     role_id: int
     is_active: bool = True
     is_superuser: bool = False
@@ -20,6 +22,7 @@ class UserRead(schemas.BaseUser[int]):
 
 class UserCreate(BaseModel):
     username: str
+    name: Optional[str]
     email: EmailStr
     password: str
 
@@ -28,9 +31,12 @@ class UserCreate(BaseModel):
             "username": self.username,
             "email": self.email,
             "password": self.password,
+            "name": self.name
         }
 
 
 class UserUpdate(BaseModel):
-    username: str
-    password: str
+    username: Optional[str]
+    name: Optional[str]
+    address: Optional[int]
+    phone: Optional[str]
