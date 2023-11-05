@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useParams, useNavigate} from 'react-router-dom';
+import {useParams, useNavigate, useLocation} from 'react-router-dom';
 import search_css from './Search.module.css';
 
 function Search(props) {
@@ -7,12 +7,13 @@ function Search(props) {
     const [searchTerm, setSearchTerm] = useState(query || '');
     const [enterPressed, setEnterPressed] = useState(false);
     const navigate = useNavigate();
+    const currentUrl = useLocation().pathname;
 
     const handleSearch = () => {
         if (searchTerm.trim() !== '') {
-            navigate(`/?search=${searchTerm}`);
+            navigate(`${currentUrl}?search=${searchTerm}`);
         } else if (searchTerm.trim() === '') {
-            navigate(``);
+            navigate(currentUrl);
         }
     };
 
@@ -31,7 +32,7 @@ function Search(props) {
         backgroundColor: enterPressed ? getComputedStyle(document.documentElement).getPropertyValue('--main-search-button-active-bg-color') : getComputedStyle(document.documentElement).getPropertyValue('--main-search-button-bg-color'),
     };
 
-    return (<div className={search_css.d2}>
+    return (<div className={search_css.search}>
         <input
             type="text"
             placeholder="Искать здесь..."

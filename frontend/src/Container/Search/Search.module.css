@@ -1,11 +1,11 @@
-.d2 {
+.search {
     box-sizing: border-box;
     position: absolute;
     top: 20px;
-    left: var(--main-horizontally-padding-px);
+    left: 0;
     width: auto;
 }
-.d2 input {
+.search input {
     width: 200px;
     height: 42px;
     padding-left: 15px;
@@ -18,20 +18,20 @@
     transition: .3s linear;
     margin-right: -40px;
 }
-.d2 input:focus {
+.search input:focus {
     width: 250px;
 }
-.d2 button {
+.search button {
     width: 62px;
     height: 45px;
     background: var(--main-search-button-bg-color);
     border: none;
     border-radius: 42px;
 }
-.d2 button:before {
+.search button:before {
     color: var(--main-search-button-color);
 }
-.d2 button:active {
+.search button:active {
     background-color: var(--main-search-button-active-bg-color) !important;
     transition: background-color 100ms;
 }

@@ -13,7 +13,7 @@
     --main-product-info-bg-color: #E7EAEF;
     --main-product-info-border: ;
     --main-product-font-color: var(--main-font-color);
-    --main-container-bg-color: #8B9D77;
+    --main-container-bg-color: grey;
     --main-footer-bg-color: var(--main-nav-bg-color);
     --main-horizontally-padding-px: 200px;
 }
@@ -21,4 +21,9 @@
 body{
     color: var(--main-font-color);
     font-size: var(--main-font-size);
+}
+
+* {
+    margin: 0;
+    padding: 0;
 }
